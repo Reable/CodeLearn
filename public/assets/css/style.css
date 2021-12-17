@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+a{
+    text-decoration: none;
+    transition: .2s;
+    color: black;
+}
+body{
+    background-color: #CCC4FA;
+}
+div.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+p.error{
+    margin:5px 0 15px 0;
+    height: 10px;
+    font-size: 14pt;
+    color:red;
+    text-align: center;
+}
+p.homeProblem{
+    margin:10px 0 15px 0;
+    height: 10px;
+    font-size: 16pt;
+    color:red;
+    text-align: center;
+}
+div.message{
+    font-size: 19pt;
+    text-align: center;
+    height: 40px;
+    color:green;
+}
+form input[type=button],form input[type=submit]{
+    background-color: rgb(44, 44, 44);
+    color:#CCC4FA;
+    transition: .2s;
+    cursor: pointer;
+    margin-top: 20px;
+}
+form input[type=button]:hover,form input[type=submit]:hover{
+    transform: scale(1.01);
+    background-color: #2C2C2C;
+    color:#CCC4FA;
+}
+form input[type=button]:active,form input[type=submit]:active{
+    background-color:black;
+    color:white;
+}
+/*============================================layout.blade.php=============================================*/
+header{
+    font-size: 13pt;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+header div.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header div.logo{
+    width: 20%;
+    font-size: 24pt;
+}
+header nav{
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+}
+header div.auch{
+    border: 1px solid white;
+    background-color: rgba(255,255,255,0.4);
+    transform: scale(1.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+header div.auch a{
+    margin: 0 5px;
+}
+main{
+    margin: 10px 0 20px 0;
+    min-height: calc(100vh - 240px );
+}
+/*============================================admin.authorization.blade.php===============================*/
+div.authorization h1{
+    text-align: center;
+}
+div.authorization form{
+    width: 60%;
+    margin: 0 auto;
+}
+div.authorization form input{
+    width: 100%;
+    padding-left: 10px;
+    height: 50px;
+    font-size: 15pt;
+    font-family: Arial;
+    border-radius: 10px;
+    border:2px solid #5A5A5A;
+}
+/*============================================layout.blade.php=============================================*/
+footer{
+    background-color: #2C2C2C;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+footer p{
+    margin-bottom: 5px;
+    color: #5A5A5A;
+}
