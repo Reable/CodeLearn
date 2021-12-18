@@ -64,12 +64,12 @@ class AuchController extends Controller
         $password = $request->input('password');
 
         if(Auth::attempt(['login'=>$login,'password'=>$password],true)){
-            return redirect()->route('index_page');
+            return redirect()->route('personal_area');
         }else{
             return redirect()->route('authorization_page')->withErrors('Ошибка логина или пароля','homeProblem');
         }
     }
-    //
+    //Функция выхода из акаунта
     public function logout(Request $request){
         Auth::logout();
         return redirect()->route('index_page')->withErrors('Вы вышли','message');

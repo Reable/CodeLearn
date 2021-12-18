@@ -7,7 +7,7 @@
 @section('main')
     <div class="authorization">
         <div class="container">
-            <h1>Рагистрация в профиле администратора</h1>
+            <h1>Рагистрация в профиле</h1>
             <form action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
 
@@ -27,5 +27,4 @@
             </form>
         </div>
     </div>
-
 @endsection

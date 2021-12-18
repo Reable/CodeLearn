@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuchController;
+use App\Http\Controllers\PersonalAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::get('/register',[AuchController::class,'register_page'])->name('register_
 Route::post('/auth',[AuchController::class,'authorization'])->name('authorization');
 Route::get('/auth',[AuchController::class,'authorization_page'])->name('authorization_page');
 
+Route::get('/personal_area',[PersonalAreaController::class,'personalArea'])->name('personal_area');
 
+Route::get('/logout',[AuchController::class,'logout'])->name('logout');

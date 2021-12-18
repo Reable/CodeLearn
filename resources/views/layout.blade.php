@@ -20,8 +20,12 @@
                 <a href="">Верстка</a>
             </nav>
             <div class="auch">
-                <a href="{{route('authorization_page')}}">Вход</a>
-                <a href="{{route('register_page')}}">Регистрация</a>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <a href="{{ route('personal_area') }}">Личный кабинет</a>
+                @else
+                    <a href="{{route('authorization_page')}}">Вход</a>
+                    <a href="{{route('register_page')}}">Регистрация</a>
+                @endif
             </div>
         </div>
     </header>
@@ -33,15 +37,15 @@
     <footer>
         <div class="container">
             <p>Иван Размыслов 2021</p>
-            <p>Сайт был создан для проверки моих умений, и не собирается исп для получений какого либо заработка</p>
+            <p>Сайт был создан для проверки моих умений, и не собирается использоваться для получений какого либо заработка</p>
         </div>
     </footer>
 
 {{--Подключение скриптов--}}
     @yield('script')
-{{--    <script>--}}
-{{--        let date = new Date();--}}
-{{--        document.querySelector('footer div.container p').innerHTML = `Иван Размыслов 2021-${date.getFullYear()}`--}}
-{{--    </script>--}}
+    <script>
+        let date = new Date();
+        document.querySelector('footer div.container p').innerHTML = `Иван Размыслов 2021-${date.getFullYear()}`
+    </script>
 </body>
 </html>

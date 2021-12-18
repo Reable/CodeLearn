@@ -7,7 +7,7 @@
 @section('main')
     <div class="authorization">
         <div class="container">
-            <h1>Авторизация в профиле администратора</h1>
+            <h1>Авторизация в профиле</h1>
             <p class="homeProblem">{{ $errors->homeProblem->first() }}</p>
             <form action="{{ route('authorization') }}" method="POST">
                 {{ csrf_field() }}

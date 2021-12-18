@@ -9,3 +9,11 @@
 
     </script>
 @endsection
+
+@section('main')
+    <div class="index">
+        <div class="container">
+
+        </div>
+    </div>
+@endsection

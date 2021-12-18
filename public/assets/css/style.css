@@ -36,6 +36,9 @@ div.message{
     height: 40px;
     color:green;
 }
+.center{
+    text-align: center;
+}
 form input[type=button],form input[type=submit]{
     background-color: rgb(44, 44, 44);
     color:#CCC4FA;
@@ -104,6 +107,67 @@ div.authorization form input{
     border-radius: 10px;
     border:2px solid #5A5A5A;
 }
+/*====================================personalarea.personalArea.blade.php==================================*/
+div.personal_area h1{
+    margin-bottom: 20px;
+}
+div.personal_area div.personal_information{
+    display: flex;
+    justify-content: space-between;
+}
+div.personal_area div.personal_information div.information{
+    width: 83%;
+    border-radius: 10px;
+    border:1px solid black;
+}
+div.personal_area div.personal_information div.information div.info{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(150, 162, 227, 0.23);
+}
+div.personal_area div.personal_information div.information div.info div.image{
+    width: 30%;
+    height: 400px;
+}
+div.personal_area div.personal_information div.information div.info div.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px 10px 10px 7px;
+}
+div.personal_area div.personal_information div.setting{
+    padding-top: 10px;
+    width: 15%;
+    background-color: rgba(150, 162, 227, 0.23);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+div.personal_area div.personal_information div.setting nav div.link{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+div.personal_area div.personal_information div.setting nav a.logout{
+    color: red;
+    font-size: 20px;
+    align-items: end;
+    margin-top: 20px;
+}
+div.personal_area div.personal_information div.information div.info div.text{
+    width: 67%;
+    padding-top: 10px;
+}
+div.personal_area div.personal_information div.information div.info div.text div.description{
+    width: 100%;
+    height: 100%;
+}
+div.personal_area div.personal_information div.information div.info div.text div.description textarea{
+    width: 95%;
+    font-size: 15pt;
+    height: 60%;
+    background-color: rgba(255,255,255,0.3);
+}
+
 /*============================================layout.blade.php=============================================*/
 footer{
     background-color: #2C2C2C;
