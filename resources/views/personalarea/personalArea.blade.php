@@ -1,27 +1,110 @@
 @extends('layout')
-
-@section('title_name')
-
-@endsection
+{{--Присванвание имени страницы--}}
+@section('title_name')Личный кабинет@endsection
 
 @section('script')
+    <script>
+        window.onload = function(){
+            document.querySelector('.setting .link a').addEventListener('click',()=>{
+                info()
+            })
+        }
+        function info(){
+            let xhr = new XMLHttpRequest()
+            xhr.open('get','{{ route('update_profile_input') }}',true)
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState !== 4) return
+                let data = JSON.parse(xhr.responseText)
+                document.querySelector('div.info').innerHTML =
+                    `
+                        <div class="image">
+                            <h2>Выберите изображение</h2><input type='file'>
+                        </div>
+                        <div class="name">
+                            <form>
+                                <h2>Ваше имя:</h2> <input type='text' name="name" value='${ data.user.name }' placeholder='Введите новое имя'>
+                                <h2>Ваша фамилия:</h2><input type='text' name="surname" value='${ data.user.surname }' placeholder='Введите новое имя'>
+                                <input type="button" id="updateData" value="Изменить">
+                            </form>
+                        </div>
+                    `
+                document.getElementById('updateData').addEventListener('click',()=>{
+                    let form = document.forms[0]
+                    let updateData = JSON.stringify({
+                        'name':form.elements['name'].value,
+                        'surname':form.elements['surname'].value,
+                    })
+                    profile_update(updateData)
+                })
+            }
+            xhr.send()
+            return false
+        }
 
+        function profile_update(updateData){
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST','{{ route('update_profile') }}',true)
+            xhr.setRequestHeader('Content-Type','application/json')
+            xhr.setRequestHeader('X-CSRF-TOKEN','{{ csrf_token() }}')
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== 4) return
+                let data = JSON.parse(xhr.responseText)
+                get_info(data)
+                console.log(data)
+            }
+            xhr.send(updateData)
+            return false
+        }
+
+        function get_info(data){
+            let role = ''
+            let completed_course = ''
+            //Роль участника
+            if(data.user.role === '0'){
+                role = 'Ученик'
+            }else if(data.user.role === '1'){
+                role = 'Администратор'
+            }else if(data.user.role === '2'){
+                role = 'Создатель'
+            }
+            //Проверка на изученные языки
+            if(data.user.completed_course === null){
+                completed_course = 'Отсутствуют'
+            }else{
+                completed_course = `${data.user.completed_course}`
+            }
+            document.querySelector('div.information').innerHTML = `
+                <div class="info">
+                    <div class="image">
+                        <img src="" alt="Image person">
+                    </div>
+                    <div class="name">
+                        <h2>${data.user.name} ${data.user.surname}</h2>
+                    </div>
+                    <div class="learned">
+                        <h2>Ваша роль: ${role}</h2>
+                        <h2>Изученные языки: ${completed_course}</h2>
+                    </div>
+                </div>
+            `
+        }
+    </script>
 @endsection
 
 @section('main')
     <div class="personal_area">
         <div class="container">
-            <h1 class="center">Личный кабинет</h1>
             <div class="personal_information">
                 @foreach($data as $val)
                     <div class="information">
                         <div class="info">
                             <div class="image">
-                                <img src="data:image/jpeg;base64,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" alt="LOGO">
+                                <img src="" alt="Image person">
                             </div>
-                            <div class="text">
-                                <h2>Ваше имя: {{ $val->name }}</h2>
-                                <h2>Ваша фамилия: {{ $val->surname }}</h2>
+                            <div class="name">
+                                <h2>{{ $val->name }} {{ $val->surname }}</h2>
+                            </div>
+                            <div class="learned">
                                 @if($val->role == 0)
                                     <h2>Ваша роль: Ученик</h2>
                                 @elseif($val->role == 1)
@@ -29,12 +112,13 @@
                                 @elseif($val->role == 2)
                                     <h2>Ваша роль: Создатель</h2>
                                 @endif
-                                <br><br>
-                                <div class="description">
-                                    @if($val->description == '')
-                                        <textarea name="" placeholder="Описание, навыки и информация о пользователе" disabled></textarea>
+                                <h2>Изученные языки:
+                                    @if($val->copleted_course == '')
+                                        Отсутствуют
+                                    @else
+                                        {{ $val->completed_course }}
                                     @endif
-                                </div>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -42,7 +126,7 @@
                         <div class="center"><h3>Настройки</h3></div>
                         <nav class="center">
                             <div class="link">
-                                <a href="">Редактировать профиль</a>
+                                <a>Редактировать профиль</a>
                             </div>
                             <a class="logout" href="{{ route('logout') }}">Выход</a>
                         </nav>

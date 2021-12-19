@@ -18,15 +18,13 @@
                 <a href="">Типографика</a>
                 <a href="">Новости</a>
                 <a href="">Верстка</a>
-            </nav>
-            <div class="auch">
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <a href="{{ route('personal_area') }}">Личный кабинет</a>
                 @else
                     <a href="{{route('authorization_page')}}">Вход</a>
                     <a href="{{route('register_page')}}">Регистрация</a>
                 @endif
-            </div>
+            </nav>
         </div>
     </header>
     <div class="message">{{ $errors->message->first() }}</div>

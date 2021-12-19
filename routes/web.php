@@ -27,5 +27,7 @@ Route::post('/auth',[AuchController::class,'authorization'])->name('authorizatio
 Route::get('/auth',[AuchController::class,'authorization_page'])->name('authorization_page');
 
 Route::get('/personal_area',[PersonalAreaController::class,'personalArea'])->name('personal_area');
+Route::get('/personal_area/update',[PersonalAreaController::class,'update_profile_input'])->name('update_profile_input');
+Route::post('/personal_area/update/test',[PersonalAreaController::class,'update_profile'])->name('update_profile');
 
 Route::get('/logout',[AuchController::class,'logout'])->name('logout');
