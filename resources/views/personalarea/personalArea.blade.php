@@ -5,7 +5,7 @@
 @section('script')
     <script>
         window.onload = function(){
-            document.querySelector('.setting .link a').addEventListener('click',()=>{
+            document.querySelector('.setting nav a:first-child').addEventListener('click',()=>{
                 info()
             })
         }
