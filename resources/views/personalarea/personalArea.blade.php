@@ -18,7 +18,7 @@
                 document.querySelector('div.info').innerHTML =
                     `
                         <div class="image">
-                            <h2>Выберите изображение</h2><input type='file'>
+                            <h2>Выберите изображение</h2><input name="image" type='file'>
                         </div>
                         <div class="name">
                             <form>
@@ -29,11 +29,12 @@
                         </div>
                     `
                 document.getElementById('updateData').addEventListener('click',()=>{
-                    let form = document.forms[0]
+                    let formName = document.forms[0]
                     let updateData = JSON.stringify({
-                        'name':form.elements['name'].value,
-                        'surname':form.elements['surname'].value,
+                        'name':formName.elements['name'].value,
+                        'surname':formName.elements['surname'].value,
                     })
+
                     profile_update(updateData)
                 })
             }
@@ -50,7 +51,6 @@
                 if (xhr.readyState !== 4) return
                 let data = JSON.parse(xhr.responseText)
                 get_info(data)
-                console.log(data)
             }
             xhr.send(updateData)
             return false
@@ -73,10 +73,11 @@
             }else{
                 completed_course = `${data.user.completed_course}`
             }
+
             document.querySelector('div.information').innerHTML = `
                 <div class="info">
                     <div class="image">
-                        <img src="" alt="Image person">
+                        <img src="public/${data.user.path_to_image}" name="image" alt="Image person">
                     </div>
                     <div class="name">
                         <h2>${data.user.name} ${data.user.surname}</h2>
@@ -99,7 +100,7 @@
                     <div class="information">
                         <div class="info">
                             <div class="image">
-                                <img src="" alt="Image person">
+                                <img src="{{ asset('public/'.$val->path_to_image) }}" name="image" alt="Image person">
                             </div>
                             <div class="name">
                                 <h2>{{ $val->name }} {{ $val->surname }}</h2>
@@ -125,9 +126,13 @@
                     <div class="setting">
                         <div class="center"><h3>Настройки</h3></div>
                         <nav class="center">
-                            <div class="link">
-                                <a>Редактировать профиль</a>
-                            </div>
+                            <a>Редактировать профиль</a>
+                                @if($val->role == 1 || $val->role == 2)
+{{--                                    Ссылки только для администраторов и Создателя--}}
+                                    <a href="{{ route('admin_panel_page') }}">Панель администрирования</a>
+                                @elseif($val->role == 2)
+{{--                                    Ссылки только для Создателя--}}
+                                @endif
                             <a class="logout" href="{{ route('logout') }}">Выход</a>
                         </nav>
                     </div>

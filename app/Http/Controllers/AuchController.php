@@ -30,6 +30,7 @@ class AuchController extends Controller
             'login'=>'required|max:100|min:4|string',
             'name'=>'required|max:100|min:4|string',
             'surname'=>'required|max:100|min:4|string',
+            'image'=>'required|max:4096',
             'password'=>'required|max:100|min:5'
         ],$message);
 
@@ -37,8 +38,13 @@ class AuchController extends Controller
             return redirect()->route('register_page')->withErrors($validator,'register');
         }
 
+        $imagename = "1_". rand() ."_". time() .".". $request->file("image")->extension();
+        $request->file("image")->move(public_path("/image"), $imagename);
+        $path = "/image/". $imagename;
+
         $user = new UsersModel();
         $user->login = $request->input('login');
+        $user->path_to_image = $path;
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->password = bcrypt($request->input('password'));

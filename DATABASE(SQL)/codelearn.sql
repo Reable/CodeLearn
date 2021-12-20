@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 19 2021 г., 22:36
+-- Время создания: Дек 20 2021 г., 13:29
 -- Версия сервера: 10.3.29-MariaDB
 -- Версия PHP: 7.4.21
 
@@ -106,6 +106,7 @@ CREATE TABLE `users` (
   `surname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `completed_course` int(11) DEFAULT NULL,
+  `path_to_image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` varchar(110) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -116,9 +117,8 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `name`, `surname`, `password`, `completed_course`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
-(2, 'Reable', 'Иван', 'Размыслов', '$2y$10$KOnVE4592U76UvK3T2GzV.5OhelYgL5LhVxhhyyRZMEAMFCTCcQ5m', NULL, 'Ytt7Oufu7894rvh27KbLRZgdjsmo4CL2r1AUo1K51xv8J1KozdT3Mx8YoOu6', '2', '2021-12-17 13:11:22', '2021-12-19 16:35:24'),
-(7, 'Pasha', 'Паша', 'Минус', '$2y$10$0FS8AUwe5GCxRgBtY3O0I.vmx1pd9eoOy0OU0Upvm/SsYCATGQ5HO', NULL, 'uYDLrdsIkLimXTiIilkPuL3PIqPf05hFoEAt7iZNdTq6h1MwfJKaDtPCFRon', '0', '2021-12-17 18:19:48', '2021-12-18 08:11:13');
+INSERT INTO `users` (`id`, `login`, `name`, `surname`, `password`, `completed_course`, `path_to_image`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
+(9, 'admin', 'Иван', 'Размыслов', '$2y$10$TGd8OQdheNdouO8EzkPRzO/LTYsy5V1014SHwcT.Cn73pWDzGiWe.', NULL, '/image/1_1125914270_1639988924.jpg', 'S3DpRywsbqCItQAWmBXbQP15FLMZUdVPTb4d74HRGX8AG6KHOhUoRcDsBH2N', '2', '2021-12-20 08:28:44', '2021-12-20 07:25:39');
 
 --
 -- Индексы сохранённых таблиц
@@ -198,7 +198,7 @@ ALTER TABLE `recordings`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

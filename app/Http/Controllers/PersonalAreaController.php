@@ -31,7 +31,7 @@ class PersonalAreaController extends Controller
     public function update_profile(Request $request){
         $validator = Validator::make($request->all(),[
             'name'=>'required|string',
-            'surname'=>'required|string'
+            'surname'=>'required|string',
         ]);
         if($validator->fails()){
             return response()->json([
@@ -39,8 +39,12 @@ class PersonalAreaController extends Controller
             ],422);
         }
 
+
         $id = Auth::id();
+
         $user = UsersModel::find($id);
+
+//        $user->path_to_image = $path;
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->save();

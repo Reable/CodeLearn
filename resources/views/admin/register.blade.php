@@ -8,8 +8,11 @@
     <div class="authorization">
         <div class="container">
             <h1>Рагистрация в профиле</h1>
-            <form action="{{ route('register') }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ route('register') }}" method="POST">
                 {{ csrf_field() }}
+
+                <p class="error">{{ $errors->register->first('image') }}</p>
+                <input type="file" name="image">
 
                 <p class="error">{{ $errors->register->first('login') }}</p>
                 <input type="text" name="login" placeholder="Ваш логин">
