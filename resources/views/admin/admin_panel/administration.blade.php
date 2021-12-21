@@ -6,11 +6,13 @@
 
 @section('main')
     <div class="administration">
-        <div class="container">
+        <div class="container block">
             <div class="wrap">
-                <div class="item">
-                    <a href=""></a>
-                </div>
+                <a class="item" href="{{ route('add_languages_page') }}">
+                    <div class="item">
+                        <h3>Добавления языка программирования</h3>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

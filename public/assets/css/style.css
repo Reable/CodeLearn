@@ -38,6 +38,7 @@ p.homeProblem{
 div.message{
     font-size: 19pt;
     text-align: center;
+    width: 100%;
     height: 40px;
     color:green;
 }
@@ -64,7 +65,7 @@ form{
     width: 60%;
     margin: 0 auto;
 }
-form input{
+form input,form select{
     width: 100%;
     padding-left: 10px;
     height: 50px;
@@ -73,12 +74,30 @@ form input{
     border-radius: 10px;
     border:2px solid #5A5A5A;
 }
+div.wrap{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+div.block{
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 100%;
+}
+div.item{
+    margin: 10px;
+    border-radius: 10px;
+    padding: 20px;
+}
 /*============================================layout.blade.php=============================================*/
 header{
     font-size: 13pt;
     height: 80px;
     display: flex;
     align-items: center;
+    padding-bottom: 20px;
 }
 header div.container{
     width: 100%;
@@ -98,8 +117,8 @@ header nav{
     justify-content: space-evenly;
 }
 main{
-    margin: 10px 0 20px 0;
-    min-height: calc(100vh - 240px );
+    margin: 0 0 20px 0;
+    min-height: calc(100vh - 230px );
 }
 /*============================================admin.authorization.blade.php===============================*/
 div.authorization h1{
@@ -123,6 +142,7 @@ div.personal_area div.personal_information div.information div.info{
     grid-template-areas:
         'image name name'
         'image learned learned';
+    grid-column-gap: 20px;
 }
 div.personal_area div.personal_information div.information div.info div.image{
     grid-area: image;
@@ -193,10 +213,32 @@ div.personal_area div.personal_information div.setting nav a.logout{
     align-items: end;
     margin-top: 20px;
 }
+/**/
+div.administration div.wrap{
+    justify-content: space-around;
+}
+div.administration div.wrap a:hover{
+
+}
+div.administration div.wrap a{
+    max-width: 32%;
+    text-align: center;
+    border:1px solid gray;
+    border-radius: 20px;
+}
+
+div.languages h1,div.languages h2{
+    text-align: center;
+}
+div.languages input{
+    height: 40px;
+}
+
 /*============================================layout.blade.php=============================================*/
 footer{
     background-color: #2C2C2C;
     height: 90px;
+    padding-bottom: 20px;
     display: flex;
     align-items: center;
 }

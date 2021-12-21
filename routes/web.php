@@ -40,6 +40,10 @@ Route::group(['middleware'=>'auth'],function(){
     //(En)Routes for administrators  (Ru)Маршруты для администраторов
     Route::group(['middleware'=>'administration'],function(){
         Route::get('/admin_panel',[AdminController::class,'admin_panel_page'])->name('admin_panel_page');
+        //Добавление языка
+        Route::get('/admin_panel/add_languages',[AdminController::class,'add_languages_page'])->name('add_languages_page');
+        Route::post('/admin_panel/add_languages',[AdminController::class,'add_languages'])->name('add_languages');
+        Route::get('/admin_panel/delete_language',[AdminController::class,'delete_language'])->name('delete_language');
     });
 });
 
