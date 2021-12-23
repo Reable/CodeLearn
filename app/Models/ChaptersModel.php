@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ChaptersModel extends Model
 {
     use HasFactory;
+    protected $table = 'chapters';
+    protected $primaryKey = 'chapter_id';
 }

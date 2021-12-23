@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuchController;
 use App\Http\Controllers\PersonalAreaController;
+use App\Http\Controllers\LearnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\PersonalAreaController;
 */
 //(En)Home page (Ru)Главная страница
 Route::get('/',[IndexController::class,'index_page'])->name('index_page');
+
+//Маршруты для обучающихся страниц
+Route::get('/learn/{language}',[LearnController::class,'learning_page'])->name('learning_page');
+
 //(En)Check if the user is authorized, then on these routes he cannot  (Ru)Если пользователь авторизован то на эти маршруты ему нельзя
 Route::group(['middleware'=>'ifAuth'],function(){
 //(En)Registration page  (Ru)Страница регистрации
@@ -27,7 +32,6 @@ Route::group(['middleware'=>'ifAuth'],function(){
 //(En)Authentication page  (Ru)Страница аутентификации
     Route::post('/auth',[AuchController::class,'authorization'])->name('authorization');
     Route::get('/auth',[AuchController::class,'authorization_page'])->name('authorization_page');
-
 });
 //(En)Routes for authorized users  (Ru)Маршруты для авторизованных пользователей
 Route::group(['middleware'=>'auth'],function(){
@@ -44,6 +48,13 @@ Route::group(['middleware'=>'auth'],function(){
         Route::get('/admin_panel/add_languages',[AdminController::class,'add_languages_page'])->name('add_languages_page');
         Route::post('/admin_panel/add_languages',[AdminController::class,'add_languages'])->name('add_languages');
         Route::get('/admin_panel/delete_language',[AdminController::class,'delete_language'])->name('delete_language');
+
+        //Страница добавления записи по програмированию
+        Route::get('/admin_panel/add_recording',[AdminController::class,'add_recording_page'])->name('add_recording_page');
+        Route::post('/admin_panel/add_recording',[AdminController::class,'add_recording'])->name('add_recording');
+
+        Route::get('/admin_panel/add_chapters',[AdminController::class,'add_chapters_page'])->name('add_chapters_page');
+        Route::post('/admin_panel/add_chapters',[AdminController::class,'add_chapters'])->name('add_chapters');
     });
 });
 

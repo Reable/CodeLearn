@@ -13,8 +13,8 @@
         <div class="container">
             <div class="logo"><a href="{{route('index_page')}}">CodeLearn</a></div>
             <nav>
-                <a href="">HTML</a>
-                <a href="">CSS</a>
+                <a href="{{ route('learning_page','HTML') }}">HTML</a>
+                <a href="{{ route('learning_page','CSS') }}">CSS</a>
                 <a href="">Типографика</a>
                 <a href="">Новости</a>
                 <a href="">Верстка</a>

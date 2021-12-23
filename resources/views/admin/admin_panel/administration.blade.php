@@ -13,6 +13,16 @@
                         <h3>Добавления языка программирования</h3>
                     </div>
                 </a>
+                <a class="item" href="{{ route('add_chapters_page') }}">
+                    <div class="item">
+                        <h3>Добавления главы</h3>
+                    </div>
+                </a>
+                <a class="item" href="{{ route('add_recording_page') }}">
+                    <div class="item">
+                        <h3>Добавления записи к главе</h3>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

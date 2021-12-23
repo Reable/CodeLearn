@@ -65,7 +65,16 @@ form{
     width: 60%;
     margin: 0 auto;
 }
-form input,form select{
+.h1{
+    font-size: 24pt;
+}
+.h2{
+    font-size: 20pt;
+}
+.h3{
+    font-size: 16pt;
+}
+form input,form select,form textarea{
     width: 100%;
     padding-left: 10px;
     height: 50px;
@@ -73,6 +82,10 @@ form input,form select{
     font-family: Arial;
     border-radius: 10px;
     border:2px solid #5A5A5A;
+}
+form textarea{
+    height: 220px;
+    padding: 10px;
 }
 div.wrap{
     display: flex;
@@ -216,12 +229,17 @@ div.personal_area div.personal_information div.setting nav a.logout{
 /**/
 div.administration div.wrap{
     justify-content: space-around;
+    align-items: stretch;
 }
 div.administration div.wrap a:hover{
-
+    box-shadow: 0 0 10px blue;
+    border:1px solid blue;
 }
 div.administration div.wrap a{
     max-width: 32%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     border:1px solid gray;
     border-radius: 20px;
@@ -233,12 +251,19 @@ div.languages h1,div.languages h2{
 div.languages input{
     height: 40px;
 }
-
+/*all_recordings*/
+div.all_info_by_learn div.chapter{
+    min-height: 50px;
+    font-size: 16pt;
+}
+div.all_info_by_learn div.chapter ul{
+    margin-left: 40px;
+}
 /*============================================layout.blade.php=============================================*/
 footer{
     background-color: #2C2C2C;
     height: 90px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     display: flex;
     align-items: center;
 }

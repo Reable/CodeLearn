@@ -24,10 +24,11 @@ class AuchController extends Controller
             'required'=>'Это поле должно быть заполненым',
             'max'=>'В поле должно содержаться от 4-х до 100 символов',
             'min'=>'Минимальное количество знаков 5',
-            'string'=>'Это поле должно быть строкой'
+            'string'=>'Это поле должно быть строкой',
+            'unique'=>'Этот логин уже используется'
         ];
         $validator = Validator::make($request->all(),[
-            'login'=>'required|max:100|min:4|string',
+            'login'=>'required|max:100|min:4|string|unique:users,login',
             'name'=>'required|max:100|min:4|string',
             'surname'=>'required|max:100|min:4|string',
             'image'=>'required|max:4096',
